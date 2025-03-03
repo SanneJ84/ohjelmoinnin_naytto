@@ -10,7 +10,7 @@ let kayttaja = {}
 let kayttajat;
 
 function kirjaudu(){
-    kayttajat = JSON.parse(localStorage.getItem('users'))
+    kayttajat = JSON.parse(localStorage.getItem('kayttajat'))
     kayttajanimi2 = document.getElementById('username2').value
     salasana2 = document.getElementById('password2').value
     for (let i = 0; i < kayttajat.length; i++){
