@@ -15,7 +15,7 @@ function kirjaudu(){
     salasana2 = document.getElementById('password2').value
     for (let i = 0; i < kayttajat.length; i++){
         if (kayttajanimi2 === kayttajat[i]['username'] && salasana2 === kayttajat[i]['password']){
-            localStorage.setItem('username', kayttajanimi2)
+            localStorage.setItem('kirjautunutkayttaja', kayttajanimi2)
                 location.replace("./kirppis.html")
                 break
         }
