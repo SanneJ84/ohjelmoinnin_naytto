@@ -16,7 +16,7 @@ for (i = 0; i < ilmoitukset.length; i++){
     theTuotekuvaus = document.createElement('div')
     theTuotekuvaus.innerHTML = tamaIlmoitus.kuvaus
     theHinta = document.createElement('div')
-    theHinta.innerHTML = tamaIlmoitus.hinta
+    theHinta.innerHTML = tamaIlmoitus.hinta + ' €'
     viestinappi = document.createElement('button')
     viestinappi.setAttribute('onclick', 'lahetaviesti()')
     viestinappi.innerHTML = 'Lähetä viesti'
