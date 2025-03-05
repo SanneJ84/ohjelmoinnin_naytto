@@ -1,13 +1,13 @@
-if (localStorage.getItem('ilmoitukset')){
+if (localStorage.getItem('ilmoitukset')) {
     ilmoitukset = JSON.parse(localStorage.getItem('ilmoitukset'))
-}else {
+} else {
     ilmoitukset = []
 }
 
-for (i = 0; i < ilmoitukset.length; i++){
+for (i = 0; i < ilmoitukset.length; i++) {
     tamaIlmoitus = ilmoitukset[i]
     ilmoitus = document.createElement('div')
-    ilmoitus.setAttribute('id', 'ilmoitus'+i)
+    ilmoitus.setAttribute('id', 'ilmoitus' + i)
     theNimi = document.createElement('h1')
     theNimi.innerHTML = tamaIlmoitus.nimi
     theKuva = document.createElement('img')
@@ -18,7 +18,7 @@ for (i = 0; i < ilmoitukset.length; i++){
     theHinta = document.createElement('div')
     theHinta.innerHTML = tamaIlmoitus.hinta + ' €'
     viestinappi = document.createElement('button')
-    viestinappi.setAttribute('onclick', 'lahetaviesti()')
+    viestinappi.setAttribute('onclick', `lahetaViesti(${i})`)
     viestinappi.innerHTML = 'Lähetä viesti'
     ilmoitus.appendChild(theNimi)
     ilmoitus.appendChild(theKuva)
