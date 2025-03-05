@@ -10,7 +10,7 @@ function lisaaIlmoitus(){
     let sijainti = document.getElementById('sijainti').value
     let kuvaus = document.getElementById('kuvaus').value
     let hinta = document.getElementById('hinta').value
-    let luoja = JSON.parse(localStorage.getItem('kirjautunutkayttaja'))
+    let luoja = localStorage.getItem('kirjautunutkayttaja')
     let kategoria = document.getElementById('kategoria').value
     let uusiIlmoitus = {'luoja': luoja, 'nimi': nimi, 'sijainti': sijainti, 'kuvaus': kuvaus, 'hinta': hinta, 'kategoria': kategoria}
     ilmoitukset.push(uusiIlmoitus)
