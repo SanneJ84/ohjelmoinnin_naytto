@@ -11,7 +11,8 @@ function lisaaIlmoitus(){
     let kuvaus = document.getElementById('kuvaus').value
     let hinta = document.getElementById('hinta').value
     let luoja = JSON.parse(localStorage.getItem('kirjautunutkayttaja'))
-    let uusiIlmoitus = {'luoja': luoja, 'nimi': nimi, 'sijainti': sijainti, 'kuvaus': kuvaus, 'hinta': hinta}
+    let kategoria = document.getElementById('kategoria').value
+    let uusiIlmoitus = {'luoja': luoja, 'nimi': nimi, 'sijainti': sijainti, 'kuvaus': kuvaus, 'hinta': hinta, 'kategoria': kategoria}
     ilmoitukset.push(uusiIlmoitus)
     localStorage.setItem('ilmoitukset', JSON.stringify(ilmoitukset))
     location.replace('./kirppis.html')
