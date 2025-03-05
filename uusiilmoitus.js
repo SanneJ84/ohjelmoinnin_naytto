@@ -17,3 +17,7 @@ function lisaaIlmoitus(){
     localStorage.setItem('ilmoitukset', JSON.stringify(ilmoitukset))
     location.replace('./kirppis.html')
 }
+
+function peruuta(){
+    location.replace('./kirppis.html')
+}
