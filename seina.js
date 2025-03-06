@@ -1,3 +1,5 @@
+let x = 1
+
 if (localStorage.getItem('ilmoitukset')) {
     ilmoitukset = JSON.parse(localStorage.getItem('ilmoitukset'))
 } else {
@@ -6,6 +8,8 @@ if (localStorage.getItem('ilmoitukset')) {
 
 for (i = 0; i < ilmoitukset.length; i++) {
     tamaIlmoitus = ilmoitukset[i]
+    seina = document.createElement('div')
+    seina.setAttribute('id', 'seina')
     ilmoitus = document.createElement('div')
     ilmoitus.setAttribute('id', 'ilmoitus' + i)
     theNimi = document.createElement('h1')
@@ -26,5 +30,15 @@ for (i = 0; i < ilmoitukset.length; i++) {
     ilmoitus.appendChild(theTuotekuvaus)
     ilmoitus.appendChild(theHinta)
     ilmoitus.appendChild(viestinappi)
-    document.body.appendChild(ilmoitus)
+    if(x==1){
+        row = document.createElement('div')
+        row.setAttribute('class', 'row')
+    }
+    row.appendChild(ilmoitus)
+    seina.appendChild(row)
+    x++
+    if(x == 4){
+        x = 1
+    }
 }
+document.body.appendChild(seina)
