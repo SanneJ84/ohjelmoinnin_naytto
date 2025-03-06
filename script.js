@@ -56,3 +56,4 @@ function tallennaTiedot(){
         localStorage.setItem('kayttajat', JSON.stringify(kayttajat))
     }
 }
+
