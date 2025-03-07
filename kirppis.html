@@ -14,16 +14,16 @@
     <button id="viestit" onclick="naytaViestit()">Näytä viestit</button>
     <div id="btns-header"> 
         <div class="search-container">
-            <input type="text" class="theme2 p-2" id="searchKeyword" placeholder="Hakusana">
-            <select id="searchCategory" class="theme2 p-2">
-                <option value="">Valitse kategoria</option>
-                <option value="laitteet">Laitteet</option>
-                <option value="vaatteet">Vaatteet</option>
-                <option value="oppikirjat">Oppikirjat</option>
-                <option value="muut">Muut</option>
-            </select>
-            <button class="theme2 p-2" onclick="filterListings()">Hae</button>
-        </div>
+        <input type="text" id="search" placeholder="Hae" oninput="filterItems()">
+        <select id="category" onchange="filterItems()">
+            <option value="Kaikki">Kaikki</option>
+            <option value="Laitteet">Laitteet</option>
+            <option value="Vaatteet">Vaatteet</option>
+            <option value="Oppikirjat">Oppikirjat</option>
+            <option value="Muut">Muut</option>
+        </select>
+        <div id="results"></div>
+    </div>
     </div>
     <script src="kirppisscript.js"></script>
     <script src="seina.js"></script>
