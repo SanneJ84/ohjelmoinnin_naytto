@@ -12,9 +12,12 @@ for (i = 0; i < ilmoitukset.length; i++) {
     seina.setAttribute('id', 'seina')
     ilmoitus = document.createElement('div')
     ilmoitus.setAttribute('id', 'ilmoitus' + i)
+    ilmoitus.setAttribute('class', 'ilmoitus')
+    ilmoitus.classList.add('col-md-3')
     theNimi = document.createElement('h1')
     theNimi.innerHTML = tamaIlmoitus.nimi
     theKuva = document.createElement('img')
+    theKuva.setAttribute('src', './lataus.png')
     theSijainti = document.createElement('div')
     theSijainti.innerHTML = tamaIlmoitus.sijainti
     theTuotekuvaus = document.createElement('div')
@@ -36,9 +39,9 @@ for (i = 0; i < ilmoitukset.length; i++) {
     }
     row.appendChild(ilmoitus)
     seina.appendChild(row)
+    document.body.appendChild(row)
     x++
     if(x == 4){
         x = 1
     }
 }
-document.body.appendChild(seina)

@@ -9,22 +9,40 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <button onclick="kirjauduUlos()">Kirjaudu ulos</button>
-    <button onclick="uusiIlmoitus()">Lisää uusi ilmoitus</button>
-    <button id="viestit" onclick="naytaViestit()">Näytä viestit</button>
-    <div id="btns-header"> 
-        <div class="search-container">
-        <input type="text" id="search" placeholder="Hae" oninput="filterItems()">
-        <select id="category" onchange="filterItems()">
-            <option value="Kaikki">Kaikki</option>
-            <option value="Laitteet">Laitteet</option>
-            <option value="Vaatteet">Vaatteet</option>
-            <option value="Oppikirjat">Oppikirjat</option>
-            <option value="Muut">Muut</option>
-        </select>
-        <div id="results"></div>
-    </div>
-    </div>
+    <header>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <button class="btn btn-dark" onclick="kirjauduUlos()">Kirjaudu ulos</button>
+                    </li>
+                    <li>
+                        <button class="btn btn-dark" onclick="uusiIlmoitus()">Lisää uusi ilmoitus</button>
+                    </li>
+                    <li>
+                        <button class="btn btn-dark" id="viestit" onclick="naytaViestit()">Näytä viestit</button>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li id="btns-header" class="nav navbar-nav navbar-right">
+                        <div class="search-container">
+                            <input type="text" id="search" placeholder="Hae" oninput="filterItems()">
+                            <select id="category" onchange="filterItems()">
+                                <option value="Kaikki">Kaikki</option>
+                                <option value="Laitteet">Laitteet</option>
+                                <option value="Vaatteet">Vaatteet</option>
+                                <option value="Oppikirjat">Oppikirjat</option>
+                                <option value="Muut">Muut</option>
+                            </select>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    
+    
+    <div id="results"></div>
     <script src="kirppisscript.js"></script>
     <script src="seina.js"></script>
     <script src="haku.js"></script>

@@ -1,0 +1,36 @@
+body{
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 25px;
+    background-color: rgb(203, 226, 150);
+}
+
+#login{
+    display: flex;
+    flex-direction: column;
+}
+
+#signup{
+    display: flex;
+    flex-direction: column;
+}
+
+@media only screen and (max-width: 600px) {
+    body{max-width: 600px;}
+}
+
+@media only screen and (min-width: 600px) {
+    body{max-width: 550px;}
+}
+
+@media only screen and (min-width: 768px) {
+    body{max-width: 700px;}
+}
+
+@media only screen and (min-width: 992px) {
+    body{max-width: 850px;}
+}
+
+@media only screen and (min-width: 1200px) {
+    body{max-width: 1040px;}
+}

@@ -1,44 +1,43 @@
 body{
-    background-color: rgb(203, 226, 150);
-    margin-top: 50px;
-}
-
-#seina{
-    padding-top: 100px;
-    padding-left: 3px;
-    padding-right: 3px;
     margin-left: auto;
     margin-right: auto;
-    box-sizing: border-box;
+    font-size: 25px;
+    background-color: rgb(203, 226, 150);
 }
 
-.ilmoitus{
+#uusiIlmoitus{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
     background-color: rgb(166, 210, 63);
-    padding: 10px;
     border-radius: 7px;
     border-style: solid;
     border-color: rgb(106, 150, 4);
+    margin-top: 20px;
+}
+
+#buttons{
     display: flex;
-    flex-direction: column;
-    font-size: 1.5vw;
+    justify-content: space-between;
+    margin-top: 10px;
 }
 
 @media only screen and (max-width: 600px) {
-    #seina{max-width: 600px;}
+    body{max-width: 600px;}
 }
 
 @media only screen and (min-width: 600px) {
-    #seina{max-width: 550px;}
+    body{max-width: 550px;}
 }
 
 @media only screen and (min-width: 768px) {
-    #seina{max-width: 700px;}
+    body{max-width: 700px;}
 }
 
 @media only screen and (min-width: 992px) {
-    #seina{max-width: 850px;}
+    body{max-width: 850px;}
 }
 
 @media only screen and (min-width: 1200px) {
-    #seina{max-width: 1040px;}
+    body{max-width: 1040px;}
 }
