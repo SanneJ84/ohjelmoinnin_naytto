@@ -13,7 +13,7 @@
         <label class="form-label" for="nimi">Tuotteen nimi: </label>
         <input class="form-control" type="text" name="nimi" id="nimi">
         <label class="form-label" for="kuva">Kuva: </label>
-        <input type="file" name="kuva" id="kuva">
+        <input type="file" name="kuva" id="kuva" class="file-uploader" onchange="upload()" accept="image/*">
         <label class="form-label" for="sijainti">Sijainti: </label>
         <select name="sijainti" id="sijainti">
             <option value="Ahvenanmaa">Ahvenanmaa</option>

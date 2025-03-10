@@ -36,18 +36,19 @@ function tallennaTiedot(){
     kayttaja = {'username': kayttajanimi, 'password': salasana}
     if(salasana.length === 0 || kayttajanimi.length === 0){
         valid = false
-        alert('kirjoita salasana')
+        alert('Kirjoita salasana')
         
     }
     if(kayttajat.length > 0){
         for (let i = 0; i < kayttajat.length; i++){
             if (kayttajanimi === kayttajat[i]['username']){
-                alert('käyttäjänimi varattu')
+                alert('Käyttäjänimi varattu')
                 break
             }
             if(i+1 === kayttajat.length){
                 kayttajat.push(kayttaja)
                 localStorage.setItem('kayttajat', JSON.stringify(kayttajat))
+                alert('Rekisteröityminen onnistui')
                 break
             }
         }

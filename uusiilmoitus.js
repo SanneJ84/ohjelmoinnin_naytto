@@ -1,4 +1,32 @@
 let ilmoitukset;
+var MyApp = {};
+
+function upload() {
+    const fileUploadInput = document.querySelector('.file-uploader');
+    const image = fileUploadInput.files[0];
+
+    if (!image.type.includes('image')) {
+        return alert('Only images are allowed!');
+    }
+
+    if (image.size > 10_000_000) {
+        return alert('Maximum upload size is 10MB!');
+    }
+
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(image);
+
+    fileReader.onload = (fileReaderEvent) => {
+        let base64String = fileReaderEvent.target.result;
+
+        if (base64String.startsWith("data:image/")) {
+            MyApp.tuotekuva = base64String;
+        } else {
+            console.error("Image data is not in the correct format!");
+        }
+    };
+}
+
 
 function lisaaIlmoitus(){
     if (localStorage.getItem('ilmoitukset')) {
@@ -12,7 +40,8 @@ function lisaaIlmoitus(){
     let hinta = document.getElementById('hinta').value
     let luoja = localStorage.getItem('kirjautunutkayttaja')
     let kategoria = document.getElementById('kategoria').value
-    let uusiIlmoitus = {'luoja': luoja, 'nimi': nimi, 'sijainti': sijainti, 'kuvaus': kuvaus, 'hinta': hinta, 'kategoria': kategoria}
+    let kuva = MyApp.tuotekuva
+    let uusiIlmoitus = {'luoja': luoja, 'nimi': nimi, 'sijainti': sijainti, 'kuvaus': kuvaus, 'hinta': hinta, 'kategoria': kategoria, 'kuva': kuva}
     ilmoitukset.push(uusiIlmoitus)
     localStorage.setItem('ilmoitukset', JSON.stringify(ilmoitukset))
     location.replace('./kirppis.html')
