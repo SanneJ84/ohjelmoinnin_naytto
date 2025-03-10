@@ -8,13 +8,22 @@ function haeViestitJaNäytä(keskustelunAvain) {
     const viestiketju = document.getElementById('viestiketju');
     viestiketju.innerHTML = '';
 
+    if (keskustelunViestit.length > 0) {
+        viestiketju.style.border = '1px solid black';
+    } else {
+        viestiketju.style.border = 'hidden';
+    }
+
     keskustelunViestit.forEach(viesti => {
         console.log(`Näytetään viesti: ${viesti.lähettäjä}: ${viesti.sisältö}`);
         const viestiElementti = document.createElement('div');
         viestiElementti.className = 'alert ' + (viesti.lähettäjä === localStorage.getItem('kirjautunutkayttaja') ? 'alert-primary' : 'alert-secondary');
-        viestiElementti.textContent = `${viesti.lähettäjä}: ${viesti.sisältö}`;
+        viestiElementti.style.border = '1px solid black';
+        viestiElementti.innerHTML = `<strong>${viesti.lähettäjä}:</strong> ${viesti.sisältö}`;
         viestiketju.appendChild(viestiElementti);
     });
+
+    viestiketju.scrollTop = viestiketju.scrollHeight;
 }
 
 function tallennaKeskustelunAvain(keskustelunAvain) {
@@ -25,7 +34,7 @@ function tallennaKeskustelunAvain(keskustelunAvain) {
 function alusta() {
     aktiivisenKeskustelunAvain = localStorage.getItem('aktiivisenKeskustelunAvain');
     if (!aktiivisenKeskustelunAvain) {
-        alert('Virhe: Keskustelua ei löydy');
+        alert('Virhe: Keskustelua ei löydy');   
         console.log('Virhe: Keskustelua ei löydy');
         palaaKirppikselle();
         return;

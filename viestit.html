@@ -6,13 +6,15 @@
     <title>Viestit</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="viestityylit.css">
 </head>
 <body>
-    <div class="container mt-5">
-        <h1>Viestit</h1>
+    <div class="container mt-5" style="max-width: 800px;">
+        <h2>Viestiketju</h2>
+        <p>Muista käyttäytyä asiallisesti ja kunnioittavasti kun keskustelet muiden käyttäjien kanssa.</p>
         <div id="viestiketju" class="mb-3"></div>
         <div class="mb-3">
-            <textarea id="uusiViesti" class="form-control" rows="3" placeholder="Kirjoita viestisi tähän..."></textarea>
+            <textarea id="uusiViesti" class="form-control" rows="4" placeholder="Kirjoita viestisi tähän..."></textarea>
         </div>
         <button onclick="lahetaUusiViesti()" class="btn btn-primary">Lähetä viesti</button>
         <button onclick="palaaEtusivulle()" class="btn btn-secondary">Palaa etusivulle</button>

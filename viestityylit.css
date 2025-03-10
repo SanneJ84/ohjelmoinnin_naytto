@@ -1,0 +1,24 @@
+#uusiViesti {
+    border: 1px solid black;
+    border-radius: 7px;
+}
+
+body {
+    background-color: rgb(203, 226, 150);
+}
+
+.container {
+    background-color: white;
+    border: 2px solid rgb(106, 150, 4);
+    border-radius: 7px;
+    padding: 80px;
+}
+
+#viestiketju {
+    min-height: 20px;
+    overflow-y: auto;
+    max-height: 500px;
+    padding: 15px;
+    border: 1px solid black;
+    border-radius: 7px;
+}
