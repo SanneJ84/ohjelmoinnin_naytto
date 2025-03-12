@@ -25,16 +25,18 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li id="btns-header" class="nav navbar-nav navbar-right">
-                        <div class="search-container">
-                            <input type="text" id="search" placeholder="Hae" oninput="filterItems()">
-                            <select id="category" onchange="filterItems()">
-                                <option value="Kaikki">Kaikki</option>
-                                <option value="Laitteet">Laitteet</option>
-                                <option value="Vaatteet">Vaatteet</option>
-                                <option value="Oppikirjat">Oppikirjat</option>
-                                <option value="Muut">Muut</option>
-                            </select>
-                        </div>
+                         <!-- Kategorian valinta -->
+                    <label for="kategoria">Valitse kategoria:</label>
+                    <select id="category">
+                        <option value="laitteet">Laitteet</option>
+                        <option value="vaatteet">Vaatteet</option>
+                        <option value="oppikirjat">Oppikirjat</option>
+                        <option value="muut">Muut</option>
+                    </select>
+
+                    <!-- Ilmoitukset -->
+                    <button onclick="HaeIlmoituksetKategoriasta()">Näytä ilmoitukset</button>
+                    <ul id="announcement-list"></ul>
                     </li>
                 </ul>
             </div>
