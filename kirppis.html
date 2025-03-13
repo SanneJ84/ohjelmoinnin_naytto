@@ -42,7 +42,45 @@
             </div>
         </nav>
     </header>
-    
+
+    <!-- Muokkauslomake -->
+<div id="editListingForm">
+    <label for="nimi">Otsikko</label>
+    <input type="text" id="nimi">
+    <label for="sijainti">Sijainti</label>
+    <input type="text" id="sijainti">
+    <label for="kuvaus">Kuvaus</label>
+    <textarea id="kuvaus"></textarea>
+    <label for="hinta">Hinta</label>
+    <input type="number" id="hinta">
+    <label for="kategoria">Kategoria</label>
+    <select id="kategoria">
+        <option value="vaatteet">Vaatteet</option>
+        <option value="laitteet">Laitteet</option>
+        <option value="oppikirjat">Oppikirjat</option>
+        <option value="muut">Muut</option>
+    </select>
+    <button type="button" id="saveChanges">Tallenna muutokset</button>
+</div>
+
+    <!-- Varmistus ilmoituksen poistamiseksi -->
+    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmationModalLabel">Vahvista poisto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Sulje"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Poistetaanko ilmoitus? <span id="item-to-delete"></span>?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Peruuta</button>
+                    <button type="button" class="btn btn-danger" id="confirmDeleteButton">Poista</button>
+                </div>
+            </div>
+        </div>
+    </div>
     
     <div id="results"></div>
     <script src="kirppisscript.js"></script>
