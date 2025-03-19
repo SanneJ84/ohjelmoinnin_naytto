@@ -55,6 +55,7 @@ function tallennaTiedot(){
     }else{
         kayttajat.push(kayttaja)
         localStorage.setItem('kayttajat', JSON.stringify(kayttajat))
+        alert('Rekisteröityminen onnistui')
     }
 }
 
