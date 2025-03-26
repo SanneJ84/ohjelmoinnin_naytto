@@ -26,18 +26,11 @@
                 <span id="ilmoitusUudestaViestista"></span>
                 <ul class="nav navbar-nav navbar-right">
                     <li id="btns-header" class="nav navbar-nav navbar-right">
-                         <!-- Kategorian valinta -->
-                    <label for="kategoria">Valitse kategoria:</label>
-                    <select id="category">
-                        <option value="laitteet">Laitteet</option>
-                        <option value="vaatteet">Vaatteet</option>
-                        <option value="oppikirjat">Oppikirjat</option>
-                        <option value="muut">Muut</option>
-                    </select>
-
-                    <!-- Ilmoitukset -->
-                    <button onclick="HaeIlmoituksetKategoriasta()">Näytä ilmoitukset</button>
-                    <ul id="announcement-list"></ul>
+                        <button class="btn btn-dark">Kaikki</button>
+                        <button onclick="naytaVaatteet()" class="btn btn-dark">Vaatteet</button>
+                        <button onclick="naytaLaitteet()" class="btn btn-dark">Laitteet</button>
+                        <button onclick="naytaOppikirjat()" class="btn btn-dark">Oppikirjat</button>
+                        <button onclick="naytaMuut()" class="btn btn-dark">Muut</button>
                     </li>
                 </ul>
             </div>
@@ -82,10 +75,7 @@
             </div>
         </div>
     </div>
-    
-    <div id="results"></div>
     <script src="kirppisscript.js"></script>
     <script src="seina.js"></script>
-    <script src="haku.js"></script>
 </body>
 </html>

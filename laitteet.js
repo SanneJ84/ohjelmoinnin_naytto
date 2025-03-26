@@ -1,18 +1,12 @@
 let x = 1
 let scr
 
-if (localStorage.getItem('ilmoitukset')) {
-    ilmoitukset = JSON.parse(localStorage.getItem('ilmoitukset'))
-} else {
-    ilmoitukset = []
+function naytaKaikki(){
+    location.replace('./kirppis.html')
 }
 
 function naytaVaatteet(){
     location.replace('./vaatteet.html');
-}
-
-function naytaLaitteet(){
-    location.replace('./laitteet.html');
 }
 
 function naytaOppikirjat(){
@@ -23,8 +17,20 @@ function naytaMuut(){
     location.replace('./muut.html');
 }
 
+if (localStorage.getItem('ilmoitukset')) {
+    ilmoitukset = JSON.parse(localStorage.getItem('ilmoitukset'))
+} else {
+    ilmoitukset = []
+}
+
+let laitteet = []
 for (i = 0; i < ilmoitukset.length; i++) {
-    tamaIlmoitus = ilmoitukset[i]
+    if (ilmoitukset[i].kategoria == 'laitteet'){
+        laitteet.push(ilmoitukset[i])
+    }
+}
+for (i = 0; i < laitteet.length; i++) {
+    tamaIlmoitus = laitteet[i]
     seina = document.createElement('div')
     seina.setAttribute('id', 'seina')
     ilmoitus = document.createElement('div')
@@ -76,5 +82,3 @@ for (i = 0; i < ilmoitukset.length; i++) {
         x = 1
     }
 }
-
-
