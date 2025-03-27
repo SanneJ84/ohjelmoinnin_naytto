@@ -36,12 +36,17 @@ function haeKayttajanViestiketjut(viestit, kirjautunutKayttaja) {
 // Näytetään valintalista viestiketjuista joista käyttäjä voi valita tarkasteltavan viestiketjun
 function naytaViestiketjuValinta(kayttajanViestiketjut, kirjautunutKayttaja) {
     let viestiListaus = 'Valitse viestiketjun numero jota haluat tarkastella:\n\n';
+    const uudetViestit = JSON.parse(localStorage.getItem('uudetViestit')) || {};
+    const kayttajanUudetViestit = uudetViestit[kirjautunutKayttaja] || [];
+ 
     kayttajanViestiketjut.forEach((ketju, index) => {
         const [ilmoitusIndex, myyjä, ostaja] = ketju.split('-');
         const toinen = myyjä === kirjautunutKayttaja ? ostaja : myyjä;
-        viestiListaus += `${index + 1}. Keskustelu käyttäjän ${toinen} kanssa\n`;
+        const onkoUusiaViesteja = kayttajanUudetViestit.some(viesti => viesti.lähettäjä === toinen);
+        const uusiViestiMerkki = onkoUusiaViesteja ? ' (Uusi viesti!)' : '';
+        viestiListaus += `${index + 1}. Keskustelu käyttäjän ${toinen} kanssa${uusiViestiMerkki}\n`;
     });
-
+ 
     const valinta = prompt(viestiListaus);
     if (valinta && valinta > 0 && valinta <= kayttajanViestiketjut.length) {
         valitseViestiketju(kayttajanViestiketjut, valinta);
@@ -65,17 +70,17 @@ function lahetaViesti(ilmoitusIndex) {
         return;
     }
 
-    const keskustelunAvain = muodostaKeskustelunAvain(ilmoitusIndex, ilmoitus.luoja, kirjautunutKayttaja);
+    const keskustelunAvain = muodostaKeskustelunAvain(ilmoitusIndex, ilmoitus.luoja, kirjautunutKayttaja, ilmoitus.nimi);
     localStorage.setItem('aktiivisenKeskustelunAvain', keskustelunAvain);
     location.href = 'viestit.html';
 }
 
 // Muodostetaan keskustelun avain ilmoituksen indexin, luojan ja kirjautuneen käyttäjän perusteella
-function muodostaKeskustelunAvain(ilmoitusIndex, luoja, kirjautunutKayttaja) {
-    return `${ilmoitusIndex}-${luoja}-${kirjautunutKayttaja}`;
+function muodostaKeskustelunAvain(ilmoitusIndex, luoja, kirjautunutKayttaja, ilmoitusNimi) {
+    return `${ilmoitusIndex}-${luoja}-${kirjautunutKayttaja}-${ilmoitusNimi}`;
 }
 
-// Tarkistetaan onko käyttäjällä uusia viestejä ja jos on näytetään ilmoitus
+// Tarkistetaan onko käyttäjällä uusia viestejä ja jos on, näytetään ilmoitus
 function tarkistaUudetViestit() {
     const kirjautunutKayttaja = localStorage.getItem('kirjautunutkayttaja');
     const uudetViestit = JSON.parse(localStorage.getItem('uudetViestit')) || {};
@@ -87,26 +92,27 @@ function tarkistaUudetViestit() {
 }
 
 // Näytetään ilmoitus uusista viesteistä
-function naytaUudetViestiIlmoitukset(uudetViestit) {
+	function naytaUudetViestiIlmoitukset(uudetViestit) {
     const ilmoitusElementti = document.getElementById('ilmoitusUudestaViestista');
     let ilmoitusTeksti = 'Sinulle on uusia viestejä käyttäjiltä:\n';
-
-        // Käytetään Set-tietorakennetta, jotta vältetään useammat ilmoitukset samalta lähettäjältä
-        const lisatytLahettajat = new Set();
-
-        uudetViestit.forEach(viesti => {
-            if (!lisatytLahettajat.has(viesti.lähettäjä)) {
-                ilmoitusTeksti += `| ${viesti.lähettäjä}\n`;        
-                lisatytLahettajat.add(viesti.lähettäjä);
-            }
-        });
-
+ 
+    // Käytetään Set-tietorakennetta, jotta vältetään useammat ilmoitukset samalta lähettäjältä
+    const lisatytLahettajat = new Set();
+ 
+    uudetViestit.forEach(viesti => {
+        if (!lisatytLahettajat.has(viesti.lähettäjä)) {
+            ilmoitusTeksti += `| ${viesti.lähettäjä}\n`;        
+            lisatytLahettajat.add(viesti.lähettäjä);
+        }
+    });
+ 
     ilmoitusElementti.textContent = ilmoitusTeksti;
     ilmoitusElementti.style.display = 'inline';
     ilmoitusElementti.style.color = 'orange';
     ilmoitusElementti.style.fontWeight = 'bold';
     ilmoitusElementti.style.fontStyle = 'italic';
 }
+
 
 // Alustetaan sivu kun se ladataan
 window.onload = function () {

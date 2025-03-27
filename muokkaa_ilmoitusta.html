@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muokkaa ilmoitusta</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="uusiilmoitus.css">
+</head>
+<body>
+    <div id="muokkaaIlmoitus" class="container mt-5">
+        <h2>Muokkaa ilmoitusta</h2>
+        <label class="form-label" for="nimi">Tuotteen nimi: </label>
+        <input class="form-control" type="text" name="nimi" id="nimi">
+        <label class="form-label" for="kuva">Kuva: </label>
+        <input type="file" name="kuva" id="kuva" class="file-uploader" onchange="upload()" accept="image/*">
+        <img id="nykyinenKuva" src="" alt="Nykyinen kuva" style="max-width: 200px; margin-top: 10px;">
+        <label class="form-label" for="sijainti">Sijainti: </label>
+        <select name="sijainti" id="sijainti" class="form-control">
+            <option value="Ahvenanmaa">Ahvenanmaa</option>
+            <option value="Etela-karjala">Etelä-Karjala</option>
+            <option value="Etela-pohjanmaa">Etelä-Pohjanmaa</option>
+            <option value="Etela-savo">Etelä-Savo</option>
+            <option value="Kainuu">Kainuu</option>
+            <option value="Kanta-hame">Kanta-Häme</option>
+            <option value="Keski-pohjanmaa">Keski-Pohjanmaa</option>
+            <option value="Keski-suomi">Keski-Suomi</option>
+            <option value="Kymenlaakso">Kymenlaakso</option>
+            <option value="Lappi">Lappi</option>
+            <option value="Pirkanmaa">Pirkanmaa</option>
+            <option value="Pohjanmaa">Pohjanmaa</option>
+            <option value="Pohjois-karjala">Pohjois-Karjala</option>
+            <option value="Pohjois-pohjanmaa">Pohjois-Pohjanmaa</option>
+            <option value="Pohjois-savo">Pohjois-Savo</option>
+            <option value="Paijat-hame">Päijät-Häme</option>
+            <option value="Satakunta">Satakunta</option>
+            <option value="Uusimaa">Uusimaa</option>
+            <option value="Varsinais-suomi">Varsinais-Suomi</option>
+        </select>
+        <label class="form-label" for="kategoria">Kategoria: </label>
+        <select name="kategoria" id="kategoria" class="form-control">
+            <option value="laitteet">Laitteet</option>
+            <option value="vaatteet">Vaatteet</option>
+            <option value="oppikirjat">Oppikirjat</option>
+            <option value="muut">Muut</option>
+        </select>
+        <label class="form-label" for="kuvaus">Tuotteen kuvaus: </label>
+        <input class="form-control" type="text" name="kuvaus" id="kuvaus">
+        <label class="form-label" for="hinta">Hinta: </label>
+        <input class="form-control" type="number" name="hinta" id="hinta">
+        <div id="buttons" class="mt-3">
+            <button class="btn btn-secondary" onclick="peruuta()">Peruuta</button>
+            <button class="btn btn-primary" onclick="tallennaMuokkaus()">Tallenna muutokset</button>
+        </div>
+    </div>
+    <script src="muokkaa_ilmoitusta.js"></script>
+    <script src="uusiilmoitus.js"></script>
+</body>
+</html>

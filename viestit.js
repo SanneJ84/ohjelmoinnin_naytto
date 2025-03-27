@@ -51,6 +51,16 @@ function alusta() {
         naytaVirheJaPalaa('Virhe: Keskustelua ei löydy');
         return;
     }
+ 
+    const [ilmoitusIndex, myyja, ostaja, ilmoitusNimi] = aktiivisenKeskustelunAvain.split('-');
+ 
+    const ilmoitusTiedot = document.createElement('div');
+    ilmoitusTiedot.className = 'alert alert-info';
+    ilmoitusTiedot.innerHTML = `<strong>Keskustelu aiheesta:</strong> ${ilmoitusNimi}`;
+ 
+    const container = document.querySelector('.container');
+    container.insertBefore(ilmoitusTiedot, container.firstChild);
+ 
     haeViestitJaNäytä(aktiivisenKeskustelunAvain);
 }
 

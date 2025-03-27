@@ -47,6 +47,28 @@ for (i = 0; i < ilmoitukset.length; i++) {
     } else {
         img.src = "./lataus.png";
     }
+
+    // Kun käyttäjä on ilmoituksen luoja, näytetään muokkaus- ja poistopainikkeet
+    if (tamaIlmoitus.luoja === localStorage.getItem('kirjautunutkayttaja')) {
+        const editButton = document.createElement('button');
+        editButton.innerHTML = 'Muokkaa';
+        editButton.setAttribute('onclick', `muokkaaIlmoitusta(${i})`);
+        editButton.classList.add('btn', 'btn-warning', 'mr-2');
+        editButton.style.marginRight = '5px';
+ 
+        const deleteButton = document.createElement('button');
+        deleteButton.innerHTML = 'Poista';
+        deleteButton.setAttribute('onclick', `poistaIlmoitus(${i})`);
+        deleteButton.classList.add('btn', 'btn-danger');
+ 
+        const buttonContainer = document.createElement('div');
+        buttonContainer.classList.add('mt-2');
+        buttonContainer.appendChild(editButton);
+        buttonContainer.appendChild(deleteButton);
+ 
+        ilmoitus.appendChild(buttonContainer);
+    }
+
     theKuva.appendChild(img);
 
     theSijainti = document.createElement('div')
@@ -74,6 +96,50 @@ for (i = 0; i < ilmoitukset.length; i++) {
     x++
     if(x == 4){
         x = 1
+    }
+
+    // Muokkaa ilmoitusta
+    function muokkaaIlmoitusta(index) {
+        const ilmoitus = ilmoitukset[index];
+        localStorage.setItem('muokattavaIlmoitus', JSON.stringify({index, ...ilmoitus}));
+        location.href = 'muokkaa_ilmoitusta.html';
+    }
+     
+    // Poista ilmoitus
+    function poistaIlmoitus(index) {
+        if (confirm('Haluatko varmasti poistaa tämän ilmoituksen?')) {
+            const poistettuIlmoitus = ilmoitukset[index];
+            ilmoitukset.splice(index, 1);
+            localStorage.setItem('ilmoitukset', JSON.stringify(ilmoitukset));
+     
+            poistaIlmoituksenViestikeskustelut(poistettuIlmoitus);
+     
+            location.reload();
+        }
+    }
+
+    // Poistetaan ilmoituksen viestiketjut ja uudet viestit kun ilmoitus poistetaan
+    function poistaIlmoituksenViestikeskustelut(ilmoitus) {
+        const viestit = JSON.parse(localStorage.getItem('viestit')) || {};
+        const uudetAvaimetJaViestit = {};
+     
+        for (const [avain, keskustelu] of Object.entries(viestit)) {
+            const [ilmoitusIndex, myyja, ostaja] = avain.split('-');
+            if (myyja !== ilmoitus.luoja) {
+                uudetAvaimetJaViestit[avain] = keskustelu;
+            }
+        }
+     
+        localStorage.setItem('viestit', JSON.stringify(uudetAvaimetJaViestit));
+     
+        const uudetViestit = JSON.parse(localStorage.getItem('uudetViestit')) || {};
+        for (const kayttaja in uudetViestit) {
+            uudetViestit[kayttaja] = uudetViestit[kayttaja].filter(viesti => viesti.lähettäjä !== ilmoitus.luoja);
+            if (uudetViestit[kayttaja].length === 0) {
+                delete uudetViestit[kayttaja];
+            }
+        }
+        localStorage.setItem('uudetViestit', JSON.stringify(uudetViestit));
     }
 }
 
